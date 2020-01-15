@@ -3,10 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NewsMainComponent } from './news-main/news-main.component';
+import { NewsHeaderComponent } from './news-header/news-header.component';
+import { NewsFooterComponent } from './news-footer/news-footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NewsMainComponent,
+    NewsHeaderComponent,
+    NewsFooterComponent
   ],
   imports: [
     BrowserModule,
