@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-news-main',
@@ -6,10 +6,49 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news-main.component.scss']
 })
 export class NewsMainComponent implements OnInit {
+  @Output() loadMore = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onLoadMore(){
+    console.log('Load more');
+    //this.loadMore.emit(this.newsItem);
+  }
+
+  newsItems = [
+    {
+      picture:"pic1",
+      title:"title1",
+      info:"info1",
+      date:"date1"
+    },{
+      picture:"pic2",
+      title:"title2",
+      info:"info2",
+      date:"date2"
+    },{
+      picture:"pic3",
+      title:"title3",
+      info:"info3",
+      date:"date3"
+    },{
+      picture:"pic4",
+      title:"title4",
+      info:"info4",
+      date:"date4"
+    },{
+      picture:"pic5",
+      title:"title5",
+      info:"info5",
+      date:"date5"
+    },{
+      picture:"pic6",
+      title:"title6",
+      info:"info6",
+      date:"date6"
+    }
+  ]
 }

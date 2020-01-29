@@ -1,1 +1,30 @@
-<p>news-main works!</p>
+<div class="main-flex-container container-border">
+    <h1>Source name</h1>
+    <div class="flex-sb container-border">
+        <select>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+        <div class="news-fliter">
+            <input type="text">
+            <button>Filter</button>
+        </div>
+        <div class="flex-sb">
+            <input type="checkbox" name="" value="" checked>
+            <p>Only created by me</p>
+        </div>
+        <button>Add Article</button>
+    </div>
+    <div class="news-items-container">
+        <app-news-main-item
+        *ngFor="let newsItem of newsItems"
+        [newsItem]="newsItem">
+        </app-news-main-item>
+        
+        <div class="load-items" (click)="onLoadMore()">
+            <p>Load more</p>
+        </div>
+    </div>        
+
+</div>

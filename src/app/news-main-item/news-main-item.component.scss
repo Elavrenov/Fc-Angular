@@ -1,0 +1,24 @@
+.flex-sb{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.news-item{
+    width: 1100px;
+    height: 150px;
+    border: 1px solid black;
+    margin: 30px 0;
+}
+
+.item-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item-buttons button{
+    width: 100px;
+    height: 30px;
+    margin: 0 20px 5px;
+}

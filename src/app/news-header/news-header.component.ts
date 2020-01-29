@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news-header.component.scss']
 })
 export class NewsHeaderComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
   }
 
+  onLogin(){
+    console.log("LOGIN")
+  }
 }

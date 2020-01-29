@@ -1,0 +1,32 @@
+.main-flex-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-flex-container h1{
+    text-align: center;
+}
+
+.flex-sb{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-border{
+    border: 1px solid black;
+}
+
+.news-items-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.load-items{
+    border: 1px solid black;
+    text-align: center;
+    cursor: pointer;
+    width: 1100px;
+    margin-bottom: 30px;
+}

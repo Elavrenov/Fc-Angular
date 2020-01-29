@@ -1,0 +1,17 @@
+.logo{
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+}
+
+.user-logout{
+    display: flex;
+    flex-direction: row;
+}
+
+.header-flex-container{
+    align-items: center;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
