@@ -5,14 +5,14 @@
         </div>
         <div>
             <h1>{{newsItem.title}}</h1>
-            <h1>{{newsItem.info}}</h1>
+            <h1>{{newsItem.info | slice: 0:20}}</h1>
         </div>
     </div>
     <div class="flex-sb">
         <h1>{{newsItem.date}}</h1>
         <div class="item-buttons">
-            <button>Edit</button>
-            <button>Delete</button>
+            <button (click)="onEdit(newsItem)">Edit</button>
+            <button (click)="onDelete(newsItem)">Delete</button>
         </div>
     </div>
 </div>

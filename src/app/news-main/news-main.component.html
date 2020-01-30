@@ -2,9 +2,9 @@
     <h1>Source name</h1>
     <div class="flex-sb container-border">
         <select>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
+            <option>1 option</option>
+            <option>2 option</option>
+            <option>3 option</option>
         </select>
         <div class="news-fliter">
             <input type="text">
@@ -16,15 +16,19 @@
         </div>
         <button>Add Article</button>
     </div>
-    <div class="news-items-container">
+    <div *ngIf="!isEditTab" class="news-items-container">
         <app-news-main-item
         *ngFor="let newsItem of newsItems"
-        [newsItem]="newsItem">
+        [newsItem]="newsItem"
+        [isEditTab]="isEditTab">
         </app-news-main-item>
         
         <div class="load-items" (click)="onLoadMore()">
             <p>Load more</p>
         </div>
-    </div>        
+    </div>
+    
+    <!-- <app-news-item-edit-form *ngIf="isEditTab"></app-news-item-edit-form> -->
+    <app-news-footer></app-news-footer>
 
 </div>

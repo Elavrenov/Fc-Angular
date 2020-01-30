@@ -1,0 +1,42 @@
+<form 
+    [formGroup]="form"
+    (ngSubmit)="onSubmit(form.value)">
+    <div>
+        <div>
+            <label for="heading">Heading</label>
+            <input type="text" name="heading" id="heading" formControlName="heading">
+        </div>
+        <div>
+            <label for="shortDesc">Short description</label>
+            <input type="text" name="shortDesc" id="shortDesc" formControlName="shortDescription">
+        </div>
+        <div>
+            <label for="content">Content</label>
+            <input type="text"  name="content" id="content" formControlName="content">
+        </div>
+    </div>
+    <div>
+        <div>
+            <label for="image">Image</label>
+            <input type="text" name="image" id="image" formControlName="image">
+        </div>
+        <div>
+            <label for="date">Date</label>
+            <input type="text" name="date" id="date" formControlName="date">
+        </div>
+        <div>
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author" formControlName="author">
+        </div>
+        <div>
+            <label for="sourceUrl">Source URL</label>
+            <input type="text" name="sourceUrl" id="sourceUrl" formControlName="sourceUrl">
+        </div>
+        <div>
+            <button type="submit">Save</button>
+            <button>Cancel</button>
+        </div>
+    </div>
+</form>
+
+<app-news-footer></app-news-footer>

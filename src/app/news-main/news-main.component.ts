@@ -8,6 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class NewsMainComponent implements OnInit {
   @Output() loadMore = new EventEmitter();
 
+  isEditTab = false;
+
   constructor() { }
 
   ngOnInit() {
