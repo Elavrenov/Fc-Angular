@@ -1,0 +1,25 @@
+.header-flex-container{
+    align-items: center;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-main-flex-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.header-main-flex-container h1{
+    text-align: center;
+}
+
+.container-border{
+    border: 1px solid black;
+}
+
+.flex-sb{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}

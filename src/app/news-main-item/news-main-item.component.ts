@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-news-main-item',
@@ -8,8 +10,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class NewsMainItemComponent implements OnInit {
   @Input() newsItem;
   @Input() isEditTab;
+  
+  private id: number;
+  private subscription: Subscription;
 
-  constructor() { }
+  constructor(private activateRoute: ActivatedRoute) {
+    this.subscription = activateRoute.params.subscribe(params=>this.id=params['id']);
+  }
 
   ngOnInit() {
   }

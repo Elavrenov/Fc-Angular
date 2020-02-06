@@ -11,7 +11,7 @@
     <div class="flex-sb">
         <h1>{{newsItem.date}}</h1>
         <div class="item-buttons">
-            <button (click)="onEdit(newsItem)">Edit</button>
+            <button [routerLink]="['edit', '5']"  (click)="onEdit(newsItem)">Edit</button>
             <button (click)="onDelete(newsItem)">Delete</button>
         </div>
     </div>

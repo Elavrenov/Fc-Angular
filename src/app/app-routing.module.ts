@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
-import { NewsMainComponent } from './news-main/news-main.component';
-import { NewsItemEditFormComponent } from './news-item-edit-form/news-item-edit-form.component';
+import { NewsMainContainerComponent } from './containers/news-main-container/news-main-container.component';
+import { NewsEditContainerComponent } from './containers/news-edit-container/news-edit-container.component';
 
 
 const routes: Routes = [
-  {path: 'edit', component: NewsItemEditFormComponent},
-  {path: ':medium', component: NewsMainComponent},
-  {path: '', pathMatch:'full', redirectTo:'all'}
+  {path: '', component: NewsMainContainerComponent},
+  {path: 'edit', component: NewsEditContainerComponent, pathMatch:'full'},
+  {path: 'edit/:id', component: NewsEditContainerComponent},
+  {path: '**',   redirectTo: '/'}
 
 ];
 

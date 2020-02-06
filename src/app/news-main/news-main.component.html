@@ -1,21 +1,4 @@
 <div class="main-flex-container container-border">
-    <h1>Source name</h1>
-    <div class="flex-sb container-border">
-        <select>
-            <option>1 option</option>
-            <option>2 option</option>
-            <option>3 option</option>
-        </select>
-        <div class="news-fliter">
-            <input type="text">
-            <button>Filter</button>
-        </div>
-        <div class="flex-sb">
-            <input type="checkbox" name="" value="" checked>
-            <p>Only created by me</p>
-        </div>
-        <button>Add Article</button>
-    </div>
     <div *ngIf="!isEditTab" class="news-items-container">
         <app-news-main-item
         *ngFor="let newsItem of newsItems"
@@ -27,8 +10,4 @@
             <p>Load more</p>
         </div>
     </div>
-    
-    <!-- <app-news-item-edit-form *ngIf="isEditTab"></app-news-item-edit-form> -->
-    <app-news-footer></app-news-footer>
-
 </div>
