@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule }  from '@angular/forms';
+import { HttpClientModule }   from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,8 +13,6 @@ import { NewsItemEditFormComponent } from './news-item-edit-form/news-item-edit-
 import { NewsMainContainerComponent } from './containers/news-main-container/news-main-container.component';
 import { NewsEditContainerComponent } from './containers/news-edit-container/news-edit-container.component';
 import { NewsActionPanelComponent } from './news-action-panel/news-action-panel.component';
-
-
 
 @NgModule({
   declarations: [
@@ -30,7 +29,8 @@ import { NewsActionPanelComponent } from './news-action-panel/news-action-panel.
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

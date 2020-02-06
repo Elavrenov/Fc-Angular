@@ -1,18 +1,31 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NewsApiHttpService } from '../services/news-api-http-service';
+import { NewsItemModel } from '../models/news-item-model';
+
+
 
 @Component({
   selector: 'app-news-main',
   templateUrl: './news-main.component.html',
-  styleUrls: ['./news-main.component.scss']
+  styleUrls: ['./news-main.component.scss'],
+  providers: [NewsApiHttpService]
 })
 export class NewsMainComponent implements OnInit {
   @Output() loadMore = new EventEmitter();
 
+  sources: NewsItemModel[];
+
+  x:any;
+
   isEditTab = false;
 
-  constructor() { }
+  constructor(private newsApiService: NewsApiHttpService) { }
 
   ngOnInit() {
+    this.x =  this.newsApiService.getAllNews().subscribe(data=>{this.sources = data});
+
+    console.log(this.x);
+    console.log(this.sources);
   }
 
   onLoadMore(){
