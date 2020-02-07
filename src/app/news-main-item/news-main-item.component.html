@@ -1,15 +1,15 @@
 <div class="flex-sb news-item">
-    <div class="flex-sb">
+    <div class="flex-sb article-left">
         <div>
-            <h1>{{newsItem.picture}}</h1>
+            <img src='{{newsItem.urlToImage}}'>
         </div>
         <div>
-            <h1>{{newsItem.title}}</h1>
-            <h1>{{newsItem.info | slice: 0:20}}</h1>
+            <h4>{{newsItem.title}}</h4>
+            <h5>{{newsItem.description| slice: 0:100}}...</h5>
         </div>
     </div>
-    <div class="flex-sb">
-        <h1>{{newsItem.date}}</h1>
+    <div class="flex-sb article-right">
+        <h5>{{newsItem.publishedAt | date:'M/d/yy, h:mm a'}}</h5>
         <div class="item-buttons">
             <button [routerLink]="['edit', '5']"  (click)="onEdit(newsItem)">Edit</button>
             <button (click)="onDelete(newsItem)">Delete</button>

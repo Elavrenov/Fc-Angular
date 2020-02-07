@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NewsApiHttpService } from '../services/news-api-http-service';
 import { NewsItemModel } from '../models/news-item-model';
+import { NewsArticleModel} from '../models/news-article-model';
+
 
 
 
@@ -14,18 +16,16 @@ export class NewsMainComponent implements OnInit {
   @Output() loadMore = new EventEmitter();
 
   sources: NewsItemModel[];
-
-  x:any;
+  articles: NewsArticleModel[];
 
   isEditTab = false;
 
   constructor(private newsApiService: NewsApiHttpService) { }
 
   ngOnInit() {
-    this.x =  this.newsApiService.getAllNews().subscribe(data=>{this.sources = data});
+    this.newsApiService.getAllNewsPublishers().subscribe(data=>{this.sources = data});
+    this.newsApiService.getNewsByPublisherId('abc-news-au').subscribe(data=>{this.articles = data});
 
-    console.log(this.x);
-    console.log(this.sources);
   }
 
   onLoadMore(){

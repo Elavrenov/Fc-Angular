@@ -1,11 +1,13 @@
-export class NewsItemModel{
-    // category:string;
-    // country:string;
-    // description:string;
-    // id:string;
-    // language:string;
-    // name:string;
-    // utl:string;
+export interface NewsItemsResponse{
+    sources: NewsItemModel[];
+}
 
-    sources:any;
+export interface NewsItemModel{
+    id: string;
+    name: string;
+    description: string;
+    url: string;
+    category: string;
+    language: string;
+    country: string;
 }

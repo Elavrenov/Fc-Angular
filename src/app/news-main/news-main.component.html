@@ -1,7 +1,7 @@
 <div class="main-flex-container container-border">
     <div *ngIf="!isEditTab" class="news-items-container">
         <app-news-main-item
-        *ngFor="let newsItem of newsItems"
+        *ngFor="let newsItem of articles"
         [newsItem]="newsItem"
         [isEditTab]="isEditTab">
         </app-news-main-item>
