@@ -14,6 +14,8 @@ import { NewsMainContainerComponent } from './containers/news-main-container/new
 import { NewsEditContainerComponent } from './containers/news-edit-container/news-edit-container.component';
 import { NewsActionPanelComponent } from './news-action-panel/news-action-panel.component';
 
+import { NewsApiUserService } from './services/news-api-user-service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,8 @@ import { NewsActionPanelComponent } from './news-action-panel/news-action-panel.
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: NewsApiUserService, useValue: new NewsApiUserService() }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,13 @@
 
-<app-news-action-panel></app-news-action-panel>
-<app-news-main></app-news-main>
+<app-news-action-panel
+    [publishersList]="publishersList"
+    (onChanged)="onActionPanelChanged($event)"
+    [sourceName]="publisherName"
+    (onFilterChanges)="getFilteredArticles($event)"
+    (viewUserArticles)="getUserArticles($event)">
+</app-news-action-panel>
+<app-news-main
+    [publisherId]="publisherId"
+    [filteredData]="filteredData"
+    [isUserArticle]="isUserArticle">
+</app-news-main>

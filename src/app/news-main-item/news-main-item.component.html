@@ -12,7 +12,7 @@
         <h5>{{newsItem.publishedAt | date:'M/d/yy, h:mm a'}}</h5>
         <div class="item-buttons">
             <button [routerLink]="['edit', '5']"  (click)="onEdit(newsItem)">Edit</button>
-            <button (click)="onDelete(newsItem)">Delete</button>
+            <button *ngIf="isUserArticle" (click)="onDelete(newsItem)">Delete</button>
         </div>
     </div>
 </div>

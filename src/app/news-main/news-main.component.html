@@ -3,7 +3,8 @@
         <app-news-main-item
         *ngFor="let newsItem of articles"
         [newsItem]="newsItem"
-        [isEditTab]="isEditTab">
+        [isEditTab]="isEditTab"
+        [isUserArticle]="isUserArticle">
         </app-news-main-item>
         
         <div class="load-items" (click)="onLoadMore()">

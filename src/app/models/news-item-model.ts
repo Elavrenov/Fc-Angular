@@ -1,8 +1,8 @@
-export interface NewsItemsResponse{
-    sources: NewsItemModel[];
+export interface NewsPublisherItemsResponse{
+    sources: NewsPublisherItemModel[];
 }
 
-export interface NewsItemModel{
+export interface NewsPublisherItemModel{
     id: string;
     name: string;
     description: string;

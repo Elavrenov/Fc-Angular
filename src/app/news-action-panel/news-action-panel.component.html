@@ -1,17 +1,18 @@
 <div class="header-main-flex-container container-border">
-    <h1>Source name</h1>
+    <h1>{{sourceName}}</h1>
     <div class="flex-sb container-border">
-        <select>
-            <option>1 option</option>
-            <option>2 option</option>
-            <option>3 option</option>
+        <select (change)="onPublisherChange($event)">
+            <option *ngFor="let publisher of publishersList"
+                    value={{publisher.id}}>
+                    {{publisher.name}}
+            </option>
         </select>
         <div class="news-fliter">
-            <input type="text">
-            <button>Filter</button>
+            <input (change)="resetFilterQuery($event)" type="text">
+            <button (click)="onFilterChange()" >Filter</button>
         </div>
         <div class="flex-sb">
-            <input type="checkbox" name="" value="" checked>
+            <input type="checkbox" (click)= "getUserArticles()" unchecked>
             <p>Only created by me</p>
         </div>
         <button routerLink="/edit" >Add Article</button>

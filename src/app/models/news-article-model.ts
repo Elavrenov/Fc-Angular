@@ -2,9 +2,9 @@ export interface NewsArticleModelResponce{
     articles: NewsArticleModel[];
 }
 
-export interface NewsArticleModel{
-    source:NewsArticleSource,
-    author: string,
+export class NewsArticleModel{
+    source:NewsArticleSource;
+    author: string;
     title: string;
     description: string;
     url: string;
@@ -13,7 +13,7 @@ export interface NewsArticleModel{
     content: string;
 }
 
-interface NewsArticleSource{
+export class NewsArticleSource{
     id:string;
     name:string;
 }
