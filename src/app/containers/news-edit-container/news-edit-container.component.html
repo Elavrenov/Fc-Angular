@@ -1,4 +1,8 @@
-<app-news-action-panel></app-news-action-panel>
+<app-news-action-panel
+    [sourceName]="publisherName"
+    [publishersList]="publishersList">
+</app-news-action-panel>
 <app-news-item-edit-form
-    (dtoArticleModel)="createNewArticle($event)">
+    (dtoArticleModel)="createNewArticle($event)"
+    [targetNewsArticle]="targetArticle">
 </app-news-item-edit-form>

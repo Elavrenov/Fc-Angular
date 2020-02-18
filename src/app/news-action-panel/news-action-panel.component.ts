@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NewsApiUserService } from '../services/news-api-user-service';
 import { NewsPublisherItemModel } from '../models/news-item-model';
+import { NewsArticleModel } from '../models/news-article-model';
 
 @Component({
   selector: 'app-news-action-panel',
@@ -20,7 +21,6 @@ export class NewsActionPanelComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  
   }
 
   onPublisherChange = (e:any) => {

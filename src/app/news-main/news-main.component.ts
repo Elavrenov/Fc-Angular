@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NewsApiHttpService } from '../services/news-api-http-service';
-import { NewsPublisherItemModel } from '../models/news-item-model';
+import { NewsArticleTransferService } from '../services/news-article-transfer-service';
 import { NewsArticleModel} from '../models/news-article-model';
 
 
@@ -10,7 +10,7 @@ import { NewsArticleModel} from '../models/news-article-model';
   selector: 'app-news-main',
   templateUrl: './news-main.component.html',
   styleUrls: ['./news-main.component.scss'],
-  providers: [NewsApiHttpService]
+  providers: [NewsApiHttpService, NewsArticleTransferService]
 })
 export class NewsMainComponent implements OnInit {
   @Output() loadMore = new EventEmitter();
@@ -37,6 +37,10 @@ export class NewsMainComponent implements OnInit {
     if(this.filteredData){
       this.articles = this.filteredData;
     }
+  }
+
+  onEditTargetNewsArticle(target:NewsArticleModel){
+    NewsArticleTransferService.setTransferArticle(target);
   }
 
   onLoadMore(){

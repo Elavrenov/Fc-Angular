@@ -44,7 +44,6 @@ export class NewsMainContainerComponent implements OnInit {
   }
 
   getUserArticles(flag:boolean){
-    debugger;
     if(flag){
       this.isUserArticle = flag;
       this.filteredData = NewsApiUserService.getAllUserArticles();

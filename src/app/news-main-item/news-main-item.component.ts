@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Directive } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { NewsApiUserService } from '../services/news-api-user-service';
 import { NewsArticleModel } from '../models/news-article-model';
@@ -10,11 +10,13 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./news-main-item.component.scss'],
   providers:[NewsApiUserService]
 })
+
 export class NewsMainItemComponent implements OnInit {
   @Input() newsItem:NewsArticleModel;
   @Input() isEditTab;
   @Input() isUserArticle:boolean = false;
-  
+  @Output() onEditNewsArticle = new EventEmitter<NewsArticleModel>();
+
   private id: number;
   private subscription: Subscription;
 
@@ -26,8 +28,7 @@ export class NewsMainItemComponent implements OnInit {
   }
 
   onEdit(target:NewsArticleModel){
-    //TODO
-    const article = NewsApiUserService.getUserArticleById(target.source.id);
+    this.onEditNewsArticle.emit(target);
   }
 
   onDelete(target:NewsArticleModel){

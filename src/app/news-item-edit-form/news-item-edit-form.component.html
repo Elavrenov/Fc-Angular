@@ -33,7 +33,7 @@
             <input type="text" name="sourceUrl" id="sourceUrl" formControlName="sourceUrl">
         </div>
         <div>
-            <button type="submit" >Save</button>
+            <button type="submit" [disabled] ="!form.valid" >Save</button>
             <button routerLink="">Cancel</button>
         </div>
     </div>

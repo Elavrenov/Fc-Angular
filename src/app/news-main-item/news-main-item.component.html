@@ -5,13 +5,13 @@
         </div>
         <div>
             <h4>{{newsItem.title}}</h4>
-            <h5>{{newsItem.description| slice: 0:100}}...</h5>
+            <h5>{{newsItem.description| slice: 0:100}}<a href={{newsItem.url}} >...Read more</a></h5>
         </div>
     </div>
     <div class="flex-sb article-right">
         <h5>{{newsItem.publishedAt | date:'M/d/yy, h:mm a'}}</h5>
         <div class="item-buttons">
-            <button [routerLink]="['edit', '5']"  (click)="onEdit(newsItem)">Edit</button>
+            <button [routerLink]="['edit', newsItem.source.id]"  (click)="onEdit(newsItem)">Edit</button>
             <button *ngIf="isUserArticle" (click)="onDelete(newsItem)">Delete</button>
         </div>
     </div>
