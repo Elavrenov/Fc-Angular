@@ -1,39 +1,40 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import { NewsPublisherItemsResponse } from '../models/news-item-model';
+import {Injectable, Inject} from '@angular/core';
 import { NewsArticleModel } from '../models/news-article-model';
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
-
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class NewsApiUserService{
-    private static userArticles:NewsArticleModel[] = [];
-    private static idCounter:number = 0;
+    private userArticles:NewsArticleModel[] = [];
+    private static idCounter:number = 1;
 
-    static createArticle(model:NewsArticleModel){
-        debugger;
+    constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService){}
 
-        model.source.id= `custom-article-${++this.idCounter}`;
+    createArticle(model:NewsArticleModel){
+        model.uid = `custom-article-${++NewsApiUserService.idCounter}`;
         this.userArticles.push(model);
+        this.storage.set(model.uid, model);
     }
 
-    static getUserArticleById(id:string):NewsArticleModel{
+    getUserArticleById(id:string):NewsArticleModel{
         return this.userArticles.find(x=>x.source.id == id);
     }
 
-    static editUserArticleById(id:string, updateModel:NewsArticleModel){
+    editUserArticleById(id:string, updateModel:NewsArticleModel){
         let article = this.getUserArticleById(id);
         article = updateModel;
     }
 
-    static getAllUserArticles():NewsArticleModel[]{
-        debugger;
+    getAllUserArticles():NewsArticleModel[]{
         return this.userArticles;
     }
 
-    static deleteUserArticleById(id:string){
+    deleteUserArticleById(id:string){
         const article = this.getUserArticleById(id);
         const index = this.userArticles.indexOf(article);
         this.userArticles.splice(index,1);
+        this.storage.remove(id);
     }
 
 }

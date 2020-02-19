@@ -3,6 +3,7 @@ export interface NewsArticleModelResponce{
 }
 
 export class NewsArticleModel{
+    uid:string;
     source:NewsArticleSource;
     author: string;
     title: string;

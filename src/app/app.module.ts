@@ -14,7 +14,8 @@ import { NewsMainContainerComponent } from './containers/news-main-container/new
 import { NewsEditContainerComponent } from './containers/news-edit-container/news-edit-container.component';
 import { NewsActionPanelComponent } from './news-action-panel/news-action-panel.component';
 
-import { NewsApiUserService } from './services/news-api-user-service';
+import { StorageServiceModule} from 'angular-webstorage-service';
+import { ArticleDescriptionPipe } from './pipes/article-description-pipe';
 
 @NgModule({
   declarations: [
@@ -26,16 +27,16 @@ import { NewsApiUserService } from './services/news-api-user-service';
     NewsItemEditFormComponent,
     NewsMainContainerComponent,
     NewsEditContainerComponent,
-    NewsActionPanelComponent
+    NewsActionPanelComponent,
+    ArticleDescriptionPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StorageServiceModule
   ],
-  providers: [
-    { provide: NewsApiUserService, useValue: new NewsApiUserService() }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

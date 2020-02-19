@@ -1,40 +1,60 @@
-<form 
-    [formGroup]="form"
-    (ngSubmit)="onSubmit(form.value)">
-    <div>
-        <div>
-            <label for="heading">Heading</label>
-            <input type="text" name="heading" id="heading" formControlName="heading">
-        </div>
-        <div>
-            <label for="shortDesc">Short description</label>
-            <input type="text" name="shortDesc" id="shortDesc" formControlName="shortDescription">
-        </div>
-        <div>
-            <label for="content">Content</label>
-            <input type="text"  name="content" id="content" formControlName="content">
+<div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                        <form 
+                        [formGroup]="form"
+                        (ngSubmit)="onSubmit(form.value)">
+                        <div>
+                            <div>
+                                <label for="heading">Heading</label>
+                                <input type="text" name="heading" id="heading" formControlName="heading" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.heading.errors  }" />
+                                <div *ngIf="submitted && f.heading.errors" class="invalid-feedback">
+                                    <div *ngIf="f.heading.errors.required">Heading is required</div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="shortDesc">Short description</label>
+                                <input type="text" name="shortDesc" id="shortDesc" formControlName="shortDescription" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.shortDescription.errors }" />
+                                <div *ngIf="submitted && f.shortDescription.errors" class="invalid-feedback">
+                                    <div *ngIf="f.shortDescription.errors.required">Short Description is required</div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="content">Content</label>
+                                <input type="text"  name="content" id="content" formControlName="content" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.content.errors }" />
+                                <div *ngIf="submitted && f.content.errors" class="invalid-feedback">
+                                    <div *ngIf="f.content.errors.required">Content is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="image">Image</label>
+                                <input type="text" name="image" id="image" formControlName="image" class="form-control">
+                            </div>
+                            <div>
+                                <label for="date">Date</label>
+                                <input type="text" name="date" id="date" formControlName="date" class="form-control">
+                            </div>
+                            <div>
+                                <label for="author">Author</label>
+                                <input type="text" name="author" id="author" formControlName="author" class="form-control">
+                            </div>
+                            <div>
+                                <label for="sourceUrl">Source URL</label>
+                                <input type="text" name="sourceUrl" id="sourceUrl" formControlName="sourceUrl" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sourceUrl.errors }" />
+                                <div *ngIf="submitted && f.sourceUrl.errors" class="invalid-feedback">
+                                    <div *ngIf="f.sourceUrl.errors.required">Source URL is required and should be in correct format</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary" >Save</button>
+                                <button routerLink="" class="btn btn-danger" >Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    <div>
-        <div>
-            <label for="image">Image</label>
-            <input type="text" name="image" id="image" formControlName="image">
-        </div>
-        <div>
-            <label for="date">Date</label>
-            <input type="text" name="date" id="date" formControlName="date">
-        </div>
-        <div>
-            <label for="author">Author</label>
-            <input type="text" name="author" id="author" formControlName="author">
-        </div>
-        <div>
-            <label for="sourceUrl">Source URL</label>
-            <input type="text" name="sourceUrl" id="sourceUrl" formControlName="sourceUrl">
-        </div>
-        <div>
-            <button type="submit" [disabled] ="!form.valid" >Save</button>
-            <button routerLink="">Cancel</button>
-        </div>
-    </div>
-</form>

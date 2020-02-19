@@ -13,27 +13,38 @@ import {Router} from "@angular/router"
 })
 export class NewsItemEditFormComponent implements OnInit {
   form: FormGroup;
+  
   @Output() dtoArticleModel = new EventEmitter<NewsArticleUserDtoModel>();
   @Input() targetNewsArticle : NewsArticleModel;
+
+  submitted:boolean = false;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
     if(this.targetNewsArticle){
       this.form = new FormGroup({
-        heading: new FormControl(`${this.targetNewsArticle.title}`),
-        shortDescription: new FormControl(`${this.targetNewsArticle.description}`),
-        content: new FormControl(`${this.targetNewsArticle.content}`),
+        heading: new FormControl(`${this.targetNewsArticle.title}`,Validators.compose([
+          Validators.required
+        ])),
+        shortDescription: new FormControl(`${this.targetNewsArticle.description}`,Validators.compose([
+          Validators.required
+        ])),
+        content: new FormControl(`${this.targetNewsArticle.content}`,Validators.compose([
+          Validators.required
+        ])),
         image: new FormControl(`${this.targetNewsArticle.urlToImage}`),
         date: new FormControl(`${this.targetNewsArticle.publishedAt}`),
         author: new FormControl(`${this.targetNewsArticle.author}`),
-        sourceUrl: new FormControl(`${this.targetNewsArticle.url}`)
+        sourceUrl: new FormControl(`${this.targetNewsArticle.url}`,Validators.compose([
+          Validators.required,
+          Validators.pattern('https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,}')
+        ]))
       });
     }else{
       this.form = new FormGroup({
         heading: new FormControl('',Validators.compose([
-          Validators.required,
-          Validators.pattern('[\\w\\-\\s/]+')
+          Validators.required
         ])),
         shortDescription: new FormControl('',Validators.compose([
           Validators.required
@@ -52,7 +63,15 @@ export class NewsItemEditFormComponent implements OnInit {
     }    
   }
 
+  get f() { return this.form.controls; }
+
   onSubmit(newsItem:any){
+    this.submitted = true;
+
+    if (this.form.invalid) {
+      return;
+    }
+
     const dto = new NewsArticleUserDtoModel();
     dto.heading = newsItem.heading;
     dto.author = newsItem.author;

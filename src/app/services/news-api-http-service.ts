@@ -5,7 +5,9 @@ import { NewsArticleModelResponce } from '../models/news-article-model';
 
 import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class NewsApiHttpService{
     private apiKey:string = 'a8e7022f2469447b94e5d28e5ecbecdd';
 
@@ -25,7 +27,7 @@ export class NewsApiHttpService{
         }
 
         return this.http.get<NewsArticleModelResponce>(`https://newsapi.org/v2/everything`, getOptions)
-            .pipe(map(data =>{return data.articles;}));
+            .pipe(map(data =>{return data.articles;})).toPromise();
     }
 
     getNewsByKeyword(searchString:string){

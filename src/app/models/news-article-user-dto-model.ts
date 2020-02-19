@@ -6,4 +6,5 @@ export class NewsArticleUserDtoModel{
     date: string;
     author: string;
     sourceUrl:string;
+    uid:string;
 }

@@ -1,7 +1,7 @@
 <div class="header-main-flex-container container-border">
     <h1>{{sourceName}}</h1>
     <div class="flex-sb container-border">
-        <select (change)="onPublisherChange($event)">
+        <select *ngIf="isPubliserListVisible" (change)="onPublisherChange($event)">
             <option *ngFor="let publisher of publishersList"
                     value={{publisher.id}}>
                     {{publisher.name}}

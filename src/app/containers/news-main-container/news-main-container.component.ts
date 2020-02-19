@@ -8,8 +8,7 @@ import { NewsArticleModel } from '../../models/news-article-model';
 @Component({
   selector: 'app-news-main-container',
   templateUrl: './news-main-container.component.html',
-  styleUrls: ['./news-main-container.component.scss'],
-  providers: [NewsApiHttpService,NewsApiUserService]
+  styleUrls: ['./news-main-container.component.scss']
 })
 
 export class NewsMainContainerComponent implements OnInit {
@@ -23,7 +22,8 @@ export class NewsMainContainerComponent implements OnInit {
   isUserArticle:boolean;
 
   constructor(
-    private newsApiService:NewsApiHttpService) { }
+    private newsApiService:NewsApiHttpService,
+    private newsApiUserService:NewsApiUserService) { }
 
   ngOnInit() {
     this.newsApiService.getAllNewsPublishers().subscribe(data=>{
@@ -46,7 +46,7 @@ export class NewsMainContainerComponent implements OnInit {
   getUserArticles(flag:boolean){
     if(flag){
       this.isUserArticle = flag;
-      this.filteredData = NewsApiUserService.getAllUserArticles();
+      this.filteredData = this.newsApiUserService.getAllUserArticles();
       this.publisherId = null;
       this.publisherName = `User articles`;
     }else{

@@ -4,8 +4,7 @@
         *ngFor="let newsItem of articles"
         [newsItem]="newsItem"
         [isEditTab]="isEditTab"
-        [isUserArticle]="isUserArticle"
-        (onEditNewsArticle)="onEditTargetNewsArticle($event)">
+        [isUserArticle]="isUserArticle">
         </app-news-main-item>
         
         <div class="load-items" (click)="onLoadMore()">

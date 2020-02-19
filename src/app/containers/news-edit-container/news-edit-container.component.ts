@@ -2,36 +2,37 @@ import { Component, OnInit } from '@angular/core';
 import { NewsApiUserService } from '../../services/news-api-user-service';
 import { NewsArticleModel, NewsArticleSource } from '../../models/news-article-model';
 import { NewsArticleUserDtoModel } from '../../models/news-article-user-dto-model';
-import { NewsArticleTransferService } from '../../services/news-article-transfer-service';
 import { NewsPublisherItemModel } from '../../models/news-item-model';
-
-
-
+import { Router } from '@angular/router';
+import { NewsApiInternalService } from '../../services/news-api-internal-service';
 
 @Component({
   selector: 'app-news-edit-container',
   templateUrl: './news-edit-container.component.html',
-  styleUrls: ['./news-edit-container.component.scss'],
-  providers: [NewsApiUserService,NewsArticleTransferService]
+  styleUrls: ['./news-edit-container.component.scss']
 })
 
 export class NewsEditContainerComponent implements OnInit {
   targetArticle:NewsArticleModel;
   publisherName:string;
   publishersList:NewsPublisherItemModel[]=[];
+  isNewsListVisible:boolean = false;
 
-  constructor() { }
+
+  constructor(private router:Router,
+              private apiDecorator:NewsApiInternalService,
+              private newsApiUserService:NewsApiUserService) { }
 
   ngOnInit() {
-    this.targetArticle = NewsArticleTransferService.getCurrentArticle();
+    debugger;
+    const articeId:string =this.router.url.slice(6);
+
+    this.targetArticle = this.apiDecorator.getArticleById(articeId);
+
     if(this.targetArticle){
       this.publisherName = this.targetArticle.title;
-      this.publishersList[0]= new NewsPublisherItemModel();
-      this.publishersList[0].name = this.targetArticle.source.name;
     }else{
       this.publisherName = 'Custom editor';
-      this.publishersList[0]= new NewsPublisherItemModel();
-      this.publishersList[0].name = 'Created by user';
     }
   }
 
@@ -45,7 +46,8 @@ export class NewsEditContainerComponent implements OnInit {
     artilce.urlToImage = dtoModel.image;
     artilce.title= dtoModel.heading;
     artilce.description = dtoModel.shortDescription;
+    artilce.uid = dtoModel.uid;
 
-    NewsApiUserService.createArticle(artilce);
+    this.newsApiUserService.createArticle(artilce);
   }
 }
