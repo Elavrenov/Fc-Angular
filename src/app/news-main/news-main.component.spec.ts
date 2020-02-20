@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NewsMainComponent } from './news-main.component';
+import { NewsApiInternalService } from '../services/news-api-internal-service';
+import { NewsMainItemComponent } from '../news-main-item/news-main-item.component';
+import { ArticleDescriptionPipe } from '../pipes/article-description-pipe';
+import { RouterLink } from '@angular/router';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { StorageServiceModule } from 'angular-webstorage-service';
 
 describe('NewsMainComponent', () => {
   let component: NewsMainComponent;
@@ -8,7 +13,9 @@ describe('NewsMainComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewsMainComponent ]
+      declarations: [ NewsMainComponent,NewsMainItemComponent,ArticleDescriptionPipe, RouterLink],
+      imports:[StorageServiceModule],
+      providers:[NewsApiInternalService,HttpClient,HttpHandler]
     })
     .compileComponents();
   }));
@@ -22,4 +29,9 @@ describe('NewsMainComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should have as isEditTab 'false'`, () => {
+    expect(component.isEditTab).toEqual(false);
+ });
+
 });

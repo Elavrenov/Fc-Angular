@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewsMainItemComponent } from './news-main-item.component';
+import { ArticleDescriptionPipe } from '../pipes/article-description-pipe';
+import { RouterTestingModule } from '@angular/router/testing';
+import { StorageServiceModule } from 'angular-webstorage-service';
 
 describe('NewsMainItemComponent', () => {
   let component: NewsMainItemComponent;
@@ -8,7 +11,8 @@ describe('NewsMainItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewsMainItemComponent ]
+      declarations: [ NewsMainItemComponent,ArticleDescriptionPipe],
+        imports:[RouterTestingModule.withRoutes([]),StorageServiceModule]
     })
     .compileComponents();
   }));
@@ -16,7 +20,7 @@ describe('NewsMainItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(NewsMainItemComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    component.ngOnInit();
   });
 
   it('should create', () => {
